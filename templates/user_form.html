@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="form-wrapper">
+
+
+    <div class="form-card">
+
+
+        <!-- Header -->
+
+        <div class="form-top">
+
+            <a href="{{ url_for('users') }}"
+               class="back-button">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Users
+
+            </a>
+
+        </div>
+
+
+        <div class="form-heading">
+
+            <div class="large-form-icon">
+
+                {% if user %}
+
+                    <i class="fa-solid fa-user-pen"></i>
+
+                {% else %}
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                {% endif %}
+
+            </div>
+
+
+            <span class="eyebrow">
+                USER MANAGEMENT
+            </span>
+
+
+            <h1>
+                {{ title }}
+            </h1>
+
+
+            <p>
+
+                {% if user %}
+
+                    Update the information for
+                    <strong>{{ user.name }}</strong>.
+
+                {% else %}
+
+                    Add a new user to your application.
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+
+
+        <!-- Form -->
+
+        <form method="POST">
+
+
+            <div class="form-grid">
+
+
+                <!-- Name -->
+
+                <div class="input-group">
+
+                    <label for="name">
+
+                        Full Name
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter full name"
+                            value="{{ user.name if user else '' }}"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Email -->
+
+                <div class="input-group">
+
+                    <label for="email">
+
+                        Email Address
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="name@example.com"
+                            value="{{ user.email if user else '' }}"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Phone -->
+
+                <div class="input-group">
+
+                    <label for="phone">
+
+                        Phone Number
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <input
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            placeholder="9876543210"
+                            value="{{ user.phone if user else '' }}"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- City -->
+
+                <div class="input-group">
+
+                    <label for="city">
+
+                        City
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Enter city"
+                            value="{{ user.city if user else '' }}"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Actions -->
+
+            <div class="form-buttons">
+
+
+                <a href="{{ url_for('users') }}"
+                   class="cancel-button">
+
+                    Cancel
+
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="save-button">
+
+                    {% if user %}
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Update User
+
+                    {% else %}
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                        Create User
+
+                    {% endif %}
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}

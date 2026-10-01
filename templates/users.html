@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CloudHub | Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                ☁
+            </div>
+
+            <div>
+
+                <h2>CloudHub</h2>
+
+                <span>
+                    Admin Console
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-title">
+            MAIN MENU
+        </div>
+
+
+        <a href="{{ url_for('users') }}"
+           class="nav-link active">
+
+            <span class="nav-icon">
+                👥
+            </span>
+
+            <span>
+                Users
+            </span>
+
+        </a>
+
+
+        <a href="#"
+           class="nav-link">
+
+            <span class="nav-icon">
+                📊
+            </span>
+
+            <span>
+                Analytics
+            </span>
+
+        </a>
+
+
+        <a href="#"
+           class="nav-link">
+
+            <span class="nav-icon">
+                🕐
+            </span>
+
+            <span>
+                Activity
+            </span>
+
+        </a>
+
+
+        <div class="sidebar-project">
+
+            <div class="project-icon">
+                ☁
+            </div>
+
+            <h4>
+                Cloud Project
+            </h4>
+
+            <p>
+                Flask application is running locally.
+            </p>
+
+            <div class="online">
+
+                <span></span>
+
+                System Online
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <span class="topbar-title">
+                    Administration
+                </span>
+
+            </div>
+
+
+            <div class="profile">
+
+                <button class="notification">
+
+                    🔔
+
+                    <span></span>
+
+                </button>
+
+
+                <div class="avatar-admin">
+                    A
+                </div>
+
+
+                <div class="profile-info">
+
+                    <strong>
+                        Admin
+                    </strong>
+
+                    <small>
+                        Administrator
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- PAGE CONTENT -->
+
+        <section class="content">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </section>
+
+
+    </main>
+
+</div>
+
+</body>
+
+</html>
+
+User_form.html
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="page-header">
+
+
+    <div>
+
+        <h1>
+            {{ title }}
+        </h1>
+
+        <p>
+
+            {% if user %}
+
+                Update the user's information.
+
+            {% else %}
+
+                Add a new user to the system.
+
+            {% endif %}
+
+        </p>
+
+    </div>
+
+
+
+    <a href="{{ url_for('users') }}"
+       class="btn-primary">
+
+        ← Back to Users
+
+    </a>
+
+
+</div>
+
+
+
+<div class="card form-card">
+
+
+    <div class="card-header">
+
+        <h3>
+            User Information
+        </h3>
+
+    </div>
+
+
+
+    <form method="POST">
+
+
+        <div class="form-group">
+
+            <label>
+                Name
+            </label>
+
+            <input
+                type="text"
+                name="name"
+                value="{{ user.name if user else '' }}"
+                placeholder="Enter full name"
+                required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                value="{{ user.email if user else '' }}"
+                placeholder="Enter email address"
+                required>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+                Phone
+            </label>
+
+            <input
+                type="text"
+                name="phone"
+                value="{{ user.phone if user else '' }}"
+                placeholder="Enter phone number">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>
+                City
+            </label>
+
+            <input
+                type="text"
+                name="city"
+                value="{{ user.city if user else '' }}"
+                placeholder="Enter city">
+
+        </div>
+
+
+
+        <div class="form-actions">
+
+
+            <a href="{{ url_for('users') }}"
+               class="btn-secondary">
+
+                Cancel
+
+            </a>
+
+
+
+            <button
+                type="submit"
+                class="btn-primary">
+
+                Save User
+
+            </button>
+
+
+        </div>
+
+
+    </form>
+
+
+</div>
+
+
+{% endblock %}
+
+
