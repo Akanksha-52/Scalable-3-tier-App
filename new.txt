@@ -1,2 +1,2 @@
 #!/bin/bash
-hello v2
+echo "updated version"
