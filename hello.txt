@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "Hello file v1"
-echo" Testing Jenkins automatic build"
+echo "Testing Jenkins automatic build"
