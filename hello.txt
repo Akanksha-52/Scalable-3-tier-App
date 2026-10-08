@@ -1,3 +1,4 @@
 #!/bin/bash
 echo "Hello file v1"
 echo "Testing Jenkins automatic build"
+echo "this is enough"
