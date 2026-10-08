@@ -2,3 +2,4 @@
 echo "Hello file v1"
 echo "Testing Jenkins automatic build"
 echo "this is enough"
+echo "last way to check the changes"
